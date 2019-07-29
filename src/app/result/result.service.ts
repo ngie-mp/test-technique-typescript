@@ -13,7 +13,7 @@ export class ResultService {
   constructor() {}
 
   public addResult(newResult: ResultModel) {
-
+    this.results.push(newResult);
   }
 
   public seenResult(idResult: number) {

@@ -22,7 +22,14 @@ describe('ResultService', () => {
 
   describe('aprés l\'ajout d\'un résultat,', () => {
     beforeEach(() => {
-      const result: ResultModel = {id: 46, idOwner: 76, idRecipients: [42], isSeen: false, eventResults: [], contentOfResult: 'Test'};
+      const result: ResultModel = {
+        id: 46,
+        idOwner: 76,
+        idRecipients: [42],
+        isSeen: false,
+        eventResults: [],
+        contentOfResult: 'Test'
+      };
       resultService = new ResultService();
       resultService.addResult(result);
     });
