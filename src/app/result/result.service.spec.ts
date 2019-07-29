@@ -124,7 +124,12 @@ describe('ResultService', () => {
 
     it('devrait avoir plus que 2 resultats vue dans la liste aprés qu\'il soit tous vue puis 1 ou la vue est enlevé',
       fakeAsync(() => {
-        expect(false).toEqual(true);
+        const results = resultService.getAllResult();
+        results.map(result => resultService.seenResult(result.id));
+
+        resultService.unseenResult(49);
+
+        expect(resultService.getAllResultSeen().length).toEqual(2);
       })
     );
 

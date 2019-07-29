@@ -9,8 +9,9 @@ import { unusedValueExportToPlacateAjd } from '@angular/core/src/render3/interfa
 export class ResultService {
 
   results: Array<ResultModel> = [];
-  constructor() {}
 
+  constructor() {}
+  
   public addResult(newResult: ResultModel) {
     const idResult = this.results.filter(result => result.id === newResult.id);
     if (idResult.length === 0 ) {
@@ -27,7 +28,9 @@ export class ResultService {
   }
 
   public unseenResult(idResult: number) {
-
+    this.results.filter(
+      result => result.id === idResult
+    )[0].isSeen = false;
   }
 
   public getAllResult(): Array<ResultModel> {
@@ -39,7 +42,7 @@ export class ResultService {
   }
 
   public getAllResultUnSeen(): Array<ResultModel> {
-    return null;
+    return this.results.filter(result => result.isSeen === false);
   }
 
   public numberOfEventSeen(): number {
