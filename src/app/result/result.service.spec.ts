@@ -92,7 +92,17 @@ describe('ResultService', () => {
 
     it('ne devrait pas authorisé l\'ajout d\'un résultats avec un id existent',
       fakeAsync(() => {
-        expect(false).toEqual(true);
+        const anotherResult = {
+          id: 48,
+          idOwner: 76,
+          idRecipients: [52],
+          isSeen: false,
+          eventResults: [],
+          contentOfResult: 'Test #3'
+        };
+        resultService.addResult(anotherResult);
+        expect(resultService.getAllResult().length).toEqual(3);
+        expect(resultService.addResult(anotherResult)).toEqual(`The id ${anotherResult.id} alredy exists`);
       })
     );
 

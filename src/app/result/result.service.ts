@@ -12,7 +12,12 @@ export class ResultService {
   constructor() {}
 
   public addResult(newResult: ResultModel) {
-    this.results.push(newResult);
+    const idResult = this.results.filter(result => result.id === newResult.id);
+    if (idResult.length === 0 ) {
+      this.results.push(newResult);
+    } else {
+      return `The id ${newResult.id} alredy exists`;
+    }
   }
 
   public seenResult(idResult: number) {
