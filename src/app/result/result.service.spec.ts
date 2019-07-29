@@ -51,14 +51,42 @@ describe('ResultService', () => {
 
   /* step 2 : 3 resultats */
   describe('aprés l\'ajout de 3 resultats,', () => {
-
     beforeEach(() => {
-      // init le service avec 3 resultats
+      const newResults = [
+        {
+          id: 47,
+          idOwner: 76,
+          idRecipients: [42],
+          isSeen: false,
+          eventResults: [],
+          contentOfResult: 'Test #2'
+        },
+        {
+          id: 48,
+          idOwner: 76,
+          idRecipients: [52],
+          isSeen: false,
+          eventResults: [],
+          contentOfResult: 'Test #3'
+        },
+        {
+          id: 49,
+          idOwner: 76,
+          idRecipients: [62],
+          isSeen: false,
+          eventResults: [],
+          contentOfResult: 'Test #4'
+        }
+      ];
+      resultService = new ResultService();
+      newResults.map(result => resultService.addResult(result));
     });
 
     it('devrait avoir une liste de 3 resultats non vue aprés l\'ajout de 3 resultat.',
       fakeAsync(() => {
-        expect(false).toEqual(true);
+        const resultList = resultService.getAllResult();
+        expect(resultService.getAllResult().length).toEqual(3);
+        resultList.map(result => expect(result.isSeen).toBe(false));
       })
     );
 
