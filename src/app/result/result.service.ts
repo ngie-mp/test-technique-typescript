@@ -8,7 +8,9 @@ import { unusedValueExportToPlacateAjd } from '@angular/core/src/render3/interfa
 })
 export class ResultService {
 
-  constructor() { }
+  results: Array<ResultModel> = [];
+
+  constructor() {}
 
   public addResult(newResult: ResultModel) {
 
@@ -23,7 +25,7 @@ export class ResultService {
   }
 
   public getAllResult(): Array<ResultModel> {
-    return null;
+    return this.results;
   }
 
   public getAllResultSeen(): Array<ResultModel> {
