@@ -135,7 +135,7 @@ describe('ResultService', () => {
 
     it('ne devrait pas planté aprés la vision d\'un resultat non ajouté',
       fakeAsync(() => {
-        expect(false).toEqual(true);
+        expect(resultService.seenResult(40)).toEqual(false);
       })
     );
   });

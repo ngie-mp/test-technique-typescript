@@ -11,9 +11,10 @@ export class ResultService {
   results: Array<ResultModel> = [];
 
   constructor() {}
-  
+
   public addResult(newResult: ResultModel) {
     const idResult = this.results.filter(result => result.id === newResult.id);
+
     if (idResult.length === 0 ) {
       this.results.push(newResult);
     } else {
@@ -22,9 +23,15 @@ export class ResultService {
   }
 
   public seenResult(idResult: number) {
-    this.results.filter(
-      result => result.id === idResult
-    )[0].isSeen = true;
+    const seenResults = this.results.filter(result => result.id === idResult);
+
+    if (seenResults.length !== 0) {
+      this.results.filter(
+        result => result.id === idResult
+      )[0].isSeen = true;
+    } else {
+      return false;
+    }
   }
 
   public unseenResult(idResult: number) {
